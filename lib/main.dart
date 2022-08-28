@@ -12,10 +12,38 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
+  String result = "0";
+
+  buttonPressed(String value){
+
+    setState(() {
+      if( value == "CLEAR" ){
+        result = "0";
+      } else if ( value == "." ){
+
+        if(result.contains(".")){
+          return;
+        } else {
+          result = result + value;
+        }
+
+      } else if ( value == "=" ){
+
+      } else {
+
+        if( result == "0" ){
+          result = value;
+        } else {
+          result = result + value;
+        }
+      }
+    });
+  }
+
   Widget myButton(String buttonLabel){
     return Expanded (
       child: OutlinedButton(
-        onPressed: (){},
+        onPressed: () => buttonPressed(buttonLabel),
         child: Text(buttonLabel,
           style: TextStyle(fontSize: 30),),
         ),
@@ -36,7 +64,7 @@ class _MyAppState extends State<MyApp> {
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 12,vertical: 24),
                 alignment: Alignment.centerRight,
-                child: Text("Result",
+                child: Text(result,
                 style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
               ),
         
@@ -82,7 +110,7 @@ class _MyAppState extends State<MyApp> {
         
               Row(
                 children: [
-                   myButton("C"),
+                   myButton("CLEAR"),
                    myButton("="),                
                 ],
               ),
