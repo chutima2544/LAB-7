@@ -14,6 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   String result = "0";
+  String expression = "";
 
   buttonPressed(String value){
 
@@ -29,6 +30,16 @@ class _MyAppState extends State<MyApp> {
         }
 
       } else if ( value == "=" ){
+
+        expression = result.replaceAll("x", "*");
+
+        Parser p = Parser();
+        Expression exp = p.parse(expression);
+
+        ContextModel cm = ContextModel();
+        dynamic calculate = exp.evaluate(EvaluationType.REAL, cm);
+        
+        result = "$calculate";
 
       } else {
 
