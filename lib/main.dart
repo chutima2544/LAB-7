@@ -32,7 +32,18 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Column(
           children: [
-            Row(
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12,vertical: 24),
+              alignment: Alignment.centerRight,
+              child: Text("Result",
+              style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold),),
+            ),
+
+            Expanded(child: Divider()),
+
+            Column(
+              children: [
+                Row(
               children: [
                  myButton("7"),
                  myButton("8"),
@@ -74,6 +85,8 @@ class _MyAppState extends State<MyApp> {
                  myButton("="),                
               ],
             ),
+              ],
+            )
           ],
         ),
       ),
