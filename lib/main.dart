@@ -11,6 +11,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  Widget myButton(){
+    return Expanded(
+      child: OutlinedButton(
+        onPressed: (){},
+        child: Text("xxx"),
+        ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,7 +30,16 @@ class _MyAppState extends State<MyApp> {
           title: Text("Calculator"),
         ),
         body: Column(
-          children: [],
+          children: [
+            Row(
+              children: [
+                 myButton(),
+                 myButton(),
+                 myButton(),
+                 myButton(),
+              ],
+            )
+          ],
         ),
       ),
     );
